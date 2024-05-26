@@ -1,0 +1,42 @@
+.SignUpform {
+  max-width: 50%;
+  margin: 0 auto;
+  min-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+label {
+  color: #474444;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-wrap: nowrap;
+}
+
+.input {
+  padding-left: 15px;
+  border: none;
+  width: 388px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0px 0px;
+  background: #f4f4f4;
+}
+
+.submitButton {
+  border-radius: 8px;
+  background: #a9bcff ;
+  width: 274px;
+  align-self: center;
+}
