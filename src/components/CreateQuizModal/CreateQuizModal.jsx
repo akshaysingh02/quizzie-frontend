@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import styles from "./CreateQuizModal.module.css";
+import { createQuiz } from "../../api/quiz";
 
 Modal.setAppElement("#root");
 
@@ -14,8 +15,8 @@ export default function CreateQuizModal({ closeModal }) {
       {
         questionText: "",
         options: [
-          { text: "", imageUrl: "", isCorrect: false, optionType: "" },
-          { text: "", imageUrl: "", isCorrect: false, optionType: "" },
+          { text: "", imageUrl: "", isCorrect: false, optionType: "text" },
+          { text: "", imageUrl: "", isCorrect: false, optionType: "text" },
         ],
         timer: 5,
         optionType: "text",
@@ -161,8 +162,9 @@ export default function CreateQuizModal({ closeModal }) {
       quizData.questions.map((item, index) => {
         item.type = quizData.type;
       });
-      // pass quizData to axios.post() to create new quiz
-      setStep(3);
+      const response = createQuiz(quizData)
+      console.log(response)
+      // setStep(3);
     }
   };
 

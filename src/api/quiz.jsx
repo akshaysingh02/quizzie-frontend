@@ -7,7 +7,10 @@ export const createQuiz = async (quizPayload) => {
     const token = JSON.parse(localStorage.getItem("token"));
     axios.defaults.headers.common["Authorization"] = token;
     const response = await axios.post(reqUrl, quizPayload);
+    console.log(response?.data)
+    return response?.data;
   } catch (error) {
+    console.log("Unable to create quiz",error);
     return error.response.data;
   }
 };
