@@ -1,27 +1,25 @@
-// src/components/AnalysisTable.js
 import React, { useState, useEffect } from "react";
+import Modal from "react-modal";
 import styles from "./AnalysisTable.module.css";
 import delete_icon from "../../assets/icons/delete.svg";
 import edit from "../../assets/icons/edit.svg";
 import share from "../../assets/icons/share_green.svg";
-import { getAllQuizzes } from "../../api/quiz";
+import { deleteQuiz, getAllQuizzes } from "../../api/quiz";
 import formatCreatedAt from "../../utils/dateconvert";
-import { useNavigate } from "react-router-dom";
 import QuestionWiseAnalysis from "../QuizAnalytics/QuestionWiseAnalysis";
 
+Modal.setAppElement('#root'); // This is important for accessibility
+
 export default function AnalysisTable() {
-  const navigate = useNavigate();
   const [quizData, setQuizData] = useState([]);
   const [selectedQuizData, setSelectedQuizData] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [quizToDelete, setQuizToDelete] = useState(null);
 
   const fetchAllQuizzes = async () => {
     const result = await getAllQuizzes();
     setQuizData(result?.data);
   };
-
-  useEffect(() => {
-    fetchAllQuizzes();
-  }, []);
 
   const handleQuestionWiseAnalysis = (quiz) => {
     setSelectedQuizData(quiz);
@@ -31,16 +29,38 @@ export default function AnalysisTable() {
     setSelectedQuizData(null);
   };
 
+  const handleDelete = async () => {
+    if (quizToDelete) {
+      await deleteQuiz(quizToDelete);
+      fetchAllQuizzes();
+      closeModal();
+    }
+  };
+
+  const openModal = (quizId) => {
+    setQuizToDelete(quizId);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setQuizToDelete(null);
+  };
+
+  useEffect(() => {
+    fetchAllQuizzes();
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       {selectedQuizData ? (
-        <QuestionWiseAnalysis 
-          questions={selectedQuizData.questions} 
-          title={selectedQuizData.title} 
-          impressions={selectedQuizData.impressions} 
+        <QuestionWiseAnalysis
+          questions={selectedQuizData.questions}
+          title={selectedQuizData.title}
+          impressions={selectedQuizData.impressions}
           createdAt={selectedQuizData.createdAt}
           type={selectedQuizData.type}
-          onBack={handleBackToQuizList} 
+          onBack={handleBackToQuizList}
         />
       ) : (
         <>
@@ -64,9 +84,9 @@ export default function AnalysisTable() {
                   <td>{formatCreatedAt(data.createdAt)}</td>
                   <td>{data.impressions}</td>
                   <td>
-                    <img src={edit} alt="" />
-                    <img src={delete_icon} alt="" />
-                    <img src={share} alt="" />
+                    <img src={edit} alt="Edit" />
+                    <img src={delete_icon} alt="Delete" onClick={() => openModal(data._id)} />
+                    <img src={share} alt="Share" />
                   </td>
                   <td>
                     <a onClick={() => handleQuestionWiseAnalysis(data)}>Question Wise Analysis</a>
@@ -77,6 +97,19 @@ export default function AnalysisTable() {
           </table>
         </>
       )}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel=""
+        className={styles.modal}
+        overlayClassName={styles.overlay}
+      >
+        <h2>Are you sure you want to delete this quiz?</h2>
+        <div className={styles.modalActions}>
+          <button onClick={handleDelete}>Confirm Delete</button>
+          <button onClick={closeModal}>Cancel</button>
+        </div>
+      </Modal>
     </div>
   );
 }

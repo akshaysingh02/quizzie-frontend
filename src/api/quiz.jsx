@@ -55,3 +55,14 @@ export const getAllQuizzes = async () => {
 }
 
 
+export const deleteQuiz = async (quizId) => {
+  try {
+    const reqUrl = `${backendUrl}/delete/${quizId}`
+    const token = JSON.parse(localStorage.getItem("token"));
+    axios.defaults.headers.common["Authorization"] = token;
+    const response = await axios.delete(reqUrl);
+    return response?.data
+  } catch (error) {
+    console.log("unable to delete the quiz", error);
+  }
+};

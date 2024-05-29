@@ -1,5 +1,5 @@
 .wrapper {
-    display: block;
+  display: block;
 }
 
 .wrapper h1 {
@@ -51,6 +51,7 @@ td {
   margin: 0 10px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 table tr:nth-child(2n) {
@@ -58,22 +59,33 @@ table tr:nth-child(2n) {
   border-radius: 10px;
 }
 
-table th:first-child{
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+table th:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
-table th:last-child{
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-
-table td:first-child{
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-table td:last-child{
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+table th:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
+table td:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+table td:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 
+/* .modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+} */
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
