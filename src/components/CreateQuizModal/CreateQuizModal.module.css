@@ -114,4 +114,12 @@ h1 {
   border-radius: 10px;
   background-color: #60b84b;
   color: white;
+  cursor: pointer;
+}
+.linkCopyButton:hover {
+  opacity: 85%;
+}
+
+.Toastify__toast--success {
+  background-color: #4caf50;
 }

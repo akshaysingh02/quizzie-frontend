@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import styles from "./CreateQuizModal.module.css";
 import { createQuiz } from "../../api/quiz";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 Modal.setAppElement("#root");
 
 export default function CreateQuizModal({ closeModal }) {
   const [step, setStep] = useState(1);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+  const [quizLink, setQuizLink] = useState("");
   const [quizData, setQuizData] = useState({
     title: "",
     type: "q&a",
@@ -156,16 +159,40 @@ export default function CreateQuizModal({ closeModal }) {
     return true;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      console.log(quizData);
-      quizData.questions.map((item, index) => {
-        item.type = quizData.type;
-      });
-      const response = createQuiz(quizData)
-      console.log(response)
-      // setStep(3);
+      try {
+        console.log(quizData);
+        quizData.questions.map((item, index) => {
+          item.type = quizData.type;
+        });
+        const response = await createQuiz(quizData);
+        console.log(response.message);
+        if (response && response.quizLink) {
+          setQuizLink(response.quizLink);
+          setStep(3);
+        }
+      } catch (error) {
+        console.error("Error creating quiz:", error);
+      }
     }
+  };
+
+  const handleCopyLink = () => {
+    const fullUrl = `http://localhost:3000/quiz/take/${quizLink}`;
+    navigator.clipboard.writeText(fullUrl)
+      .then(() => {
+        toast.success("Link copied to clipboard", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .catch(err => console.error('Error copying to clipboard:', err));
   };
 
   return (
@@ -352,20 +379,19 @@ export default function CreateQuizModal({ closeModal }) {
           </div>
         </div>
       )}
-      {step == 3 && (
+      {step === 3 && (
         <div className={styles.congratulationsWrapper}>
-          <div className={styles.closeButton} onClick={closeModal} >&times;</div>
+          <div className={styles.closeButton} onClick={closeModal}>&times;</div>
           <div className={styles.messageWrapper}>
             <h1>Congrats your Quiz is Published!</h1>
           </div>
           <div className={styles.linkHolder}>
-            <p>
-              http://localhost:4001/quiz/take/e1be3cba-c2ed-49c9-b5c4-94563a12f651
-            </p>
+            <p>{`http://localhost:3000/quiz/take/${quizLink}`}</p>
           </div>
-          <button className={styles.linkCopyButton}>Share</button>
+          <button className={styles.linkCopyButton} onClick={handleCopyLink}>Share</button>
         </div>
       )}
+      <ToastContainer />
     </Modal>
   );
 }
