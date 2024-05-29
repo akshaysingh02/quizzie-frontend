@@ -1,0 +1,33 @@
+.dataBoxWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.dataBox {
+  color: #60b84b;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background-color: white;
+  width: 295px;
+  padding: 15px 0px;
+  padding-left: 25px;
+  border-radius: 10px;
+  
+}
+.red{
+    color: #FF5D01;
+}
+.green{
+    color: #60B84B;
+}
+.purple{
+    color: #5076FF;
+}
+
+.dataBox span{
+    font-size: 60px;
+}

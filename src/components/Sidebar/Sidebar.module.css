@@ -1,0 +1,73 @@
+.sidebar {
+  background-color: white;
+  width: 20%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    justify-content: space-between;
+}
+
+.dashboard_logo {
+  color: #474444;
+  font-family: Jomhuria;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.buttonsHolder {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.buttonsHolder button {
+  color: #474444;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  width: 90%;
+  transition: box-shadow 0.3s;
+}
+.buttonsHolder button.active {
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.12);
+}
+.buttonsHolder button:hover {
+  box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.12);
+}
+
+.logoutHolder {
+  border-top: 1px solid black;
+  padding: 24px 10px;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+.logoutHolder button {
+    cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #474444;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}

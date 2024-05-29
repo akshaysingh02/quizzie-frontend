@@ -1,0 +1,117 @@
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.questionContainer {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.optionContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+input,
+select {
+  margin: 5px;
+}
+
+.error {
+  border-color: red;
+}
+
+.tabContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+  position: relative;
+}
+
+.activeTab {
+  background-color: #ddd;
+}
+
+.addTab {
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.closeTab {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: red;
+}
+
+.congratulationsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+}
+
+.closeButton {
+  align-self: flex-end;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.linkHolder {
+  max-width: 90%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #ededed;
+  padding: 15px 20px;
+}
+
+.linkHolder p {
+  /* text-wrap: nowrap; */
+}
+
+.linkCopyButton {
+  width: 300px;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+  background-color: #60b84b;
+  color: white;
+}

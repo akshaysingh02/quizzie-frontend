@@ -1,0 +1,62 @@
+.backButton {
+  border: none;
+  padding: 15px 30px;
+  background-color: #60b84b;
+  border-radius: 15px;
+  margin-bottom: 45px;
+}
+
+.topSectionWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.creationData{
+    color: #60b84b;
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.questionWrapper {
+    margin-bottom: 45px;
+    border-bottom: 2px solid #D7D7D7;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.questionText {
+  color: #000;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 30px;
+}
+
+.dataBoxWrapper {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 30px;
+}
+
+.dataBox {
+  color: #474444;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 245px;
+  height: auto;
+  background-color: white;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.dataBox h2{
+    font-size: 30px;
+    margin-bottom: 5px;
+}

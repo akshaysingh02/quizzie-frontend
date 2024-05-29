@@ -1,0 +1,44 @@
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .option {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .option img {
+    max-width: 50px;
+    margin-left: 10px;
+  }
+  
+  .option.selected {
+    border-color: blue;
+  }
+  
+  .option.disabled {
+    border-color: gray;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  button {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
