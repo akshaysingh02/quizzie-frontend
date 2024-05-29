@@ -143,7 +143,7 @@ export default function CreateQuizModal({ closeModal }) {
           return false;
         }
         if (
-          (question.optionType === "imageUrl" ||
+          (question.optionType === "image" ||
             question.optionType === "text-image") &&
           !option.imageUrl
         ) {
@@ -279,7 +279,7 @@ export default function CreateQuizModal({ closeModal }) {
                       onChange={(e) => handleOptionTypeChange(e, qIndex)}
                     >
                       <option value="text">Text</option>
-                      <option value="imageUrl">Image URL</option>
+                      <option value="image">Image URL</option>
                       <option value="text-image">Text & Image URL</option>
                     </select>
                   </label>
@@ -296,13 +296,13 @@ export default function CreateQuizModal({ closeModal }) {
                           handleOptionChange(e, qIndex, oIndex, "text")
                         }
                         className={
-                          !option.text && question.optionType !== "imageUrl"
+                          !option.text && question.optionType !== "image"
                             ? styles.error
                             : ""
                         }
                       />
                     )}
-                    {(question.optionType === "imageUrl" ||
+                    {(question.optionType === "image" ||
                       question.optionType === "text-image") && (
                       <input
                         type="text"
