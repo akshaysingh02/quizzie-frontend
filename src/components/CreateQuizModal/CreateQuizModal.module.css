@@ -104,7 +104,7 @@ h1 {
 }
 
 .linkHolder p {
-  /* text-wrap: nowrap; */
+  text-align: center;
 }
 
 .linkCopyButton {
