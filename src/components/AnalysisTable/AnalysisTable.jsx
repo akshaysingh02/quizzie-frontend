@@ -7,8 +7,10 @@ import share from "../../assets/icons/share_green.svg";
 import { deleteQuiz, getAllQuizzes } from "../../api/quiz";
 import formatCreatedAt from "../../utils/dateconvert";
 import QuestionWiseAnalysis from "../QuizAnalytics/QuestionWiseAnalysis";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-Modal.setAppElement('#root'); // This is important for accessibility
+Modal.setAppElement("#root"); // This is important for accessibility
 
 export default function AnalysisTable() {
   const [quizData, setQuizData] = useState([]);
@@ -45,6 +47,25 @@ export default function AnalysisTable() {
   const closeModal = () => {
     setIsModalOpen(false);
     setQuizToDelete(null);
+  };
+
+  const handleCopy = (uniqueLink) => {
+    console.log(uniqueLink);
+    const fullUrl = `http://localhost:3000/quiz/take/${uniqueLink}`;
+    navigator.clipboard
+      .writeText(fullUrl)
+      .then(() => {
+        toast.success("Link copied to clipboard", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .catch((err) => console.error("Error copying to clipboard:", err));
   };
 
   useEffect(() => {
@@ -85,11 +106,21 @@ export default function AnalysisTable() {
                   <td>{data.impressions}</td>
                   <td>
                     <img src={edit} alt="Edit" />
-                    <img src={delete_icon} alt="Delete" onClick={() => openModal(data._id)} />
-                    <img src={share} alt="Share" />
+                    <img
+                      src={delete_icon}
+                      alt="Delete"
+                      onClick={() => openModal(data._id)}
+                    />
+                    <img
+                      src={share}
+                      alt="Share"
+                      onClick={() => handleCopy(data.uniqueLink)}
+                    />
                   </td>
                   <td>
-                    <a onClick={() => handleQuestionWiseAnalysis(data)}>Question Wise Analysis</a>
+                    <a onClick={() => handleQuestionWiseAnalysis(data)}>
+                      Question Wise Analysis
+                    </a>
                   </td>
                 </tr>
               ))}
@@ -110,6 +141,7 @@ export default function AnalysisTable() {
           <button onClick={closeModal}>Cancel</button>
         </div>
       </Modal>
+      <ToastContainer />
     </div>
   );
 }

@@ -6,24 +6,27 @@ export const registerUser = async ({ name, email, password }) => {
   try {
     const regUrl = `${backendUrl}/signup`;
     const response = await axios.post(regUrl, { name, email, password });
-    return;
+    return response.status;
   } catch (error) {
-    console.log(error);
-    alert("can't register user");
+    if (error.response) {
+      return error.response.status;
+    }
+    throw error;
   }
 };
 
-export const loginUser = async ({email,password}) => {
+export const loginUser = async ({ email, password }) => {
   try {
-    const regUrl = `${backendUrl}/login`
-    const response = await axios.post(regUrl,{email,password})
-    if(response.data?.token){
-        localStorage.setItem("token",JSON.stringify(response.data?.token))
-        localStorage.setItem("name",JSON.stringify(response.data?.name))
-        localStorage.setItem("userId",JSON.stringify(response.data?.userId))
+    const regUrl = `${backendUrl}/login`;
+    const response = await axios.post(regUrl, { email, password });
+    if (response.data?.token) {
+      localStorage.setItem("token", JSON.stringify(response.data?.token));
+      localStorage.setItem("name", JSON.stringify(response.data?.name));
+      localStorage.setItem("userId", JSON.stringify(response.data?.userId));
     }
+    return response?.data;
   } catch (error) {
     console.log(error);
-    alert("Can't login, Something went wrong")
+    alert("Can't login, Something went wrong");
   }
 };

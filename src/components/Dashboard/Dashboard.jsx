@@ -6,7 +6,7 @@ import TredingQuizzes from "../trendingQuizes/TredingQuizzes";
 import AnalysisTable from "../AnalysisTable/AnalysisTable";
 
 export default function Dashboard() {
-    const [selectedSection, setSelectedSection] = useState("analytics");
+    const [selectedSection, setSelectedSection] = useState("dashboard");
 
   const handleSidebarClick = (section) => {
     setSelectedSection(section);

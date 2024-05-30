@@ -8,6 +8,7 @@
 }
 
 .formGroup {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   gap: 30px;
@@ -34,9 +35,22 @@ label {
   background: #f4f4f4;
 }
 
+.inputWrapper{
+  width: 400px;
+}
+
 .submitButton {
   border-radius: 8px;
   background: #a9bcff ;
   width: 274px;
   align-self: center;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.inputError {
+  border: 2px solid red;
 }
