@@ -28,6 +28,7 @@ export default function CreateQuizModal({ closeModal }) {
       },
     ],
   });
+  const frontEndLink = "https://master--vermillion-cuchufli-5fa6d1.netlify.app"
 
   const addQuestion = () => {
     if (quizData.questions.length < 5) {
@@ -184,7 +185,7 @@ export default function CreateQuizModal({ closeModal }) {
   };
 
   const handleCopyLink = () => {
-    const fullUrl = `http://localhost:3000/quiz/take/${quizLink}`;
+    const fullUrl = `${frontEndLink}/quiz/take/${quizLink}`;
     navigator.clipboard
       .writeText(fullUrl)
       .then(() => {
@@ -463,7 +464,7 @@ export default function CreateQuizModal({ closeModal }) {
             <h1>Congrats your Quiz is Published!</h1>
           </div>
           <div className={styles.linkHolder}>
-            <p>{`http://localhost:3000/quiz/take/${quizLink}`}</p>
+            <p>{`${frontEndLink}/quiz/take/${quizLink}`}</p>
           </div>
           <button className={styles.linkCopyButton} onClick={handleCopyLink}>
             Share
