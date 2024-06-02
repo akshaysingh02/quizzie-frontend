@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-const backendUrl = "http://localhost:4001/api/auth";
+const backendUrl = "https://quizzie-server-h49m.onrender.com/api/auth";
 
 export const registerUser = async ({ name, email, password }) => {
   try {
@@ -27,6 +27,5 @@ export const loginUser = async ({ email, password }) => {
     return response?.data;
   } catch (error) {
     console.log(error);
-    alert("Can't login, Something went wrong");
   }
 };

@@ -24,6 +24,11 @@ export default function Sidebar({ selectedSection,onSidebarClick }) {
     onSidebarClick(section);
   };
 
+  //fortesting
+  // useEffect(()=>{
+  //   openModal()
+  // },[])
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.dashboard_logo}>QUIZZIE</div>

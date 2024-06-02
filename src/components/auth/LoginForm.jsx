@@ -38,7 +38,7 @@ export default function LoginForm() {
     if (result) {
       navigate("/");
     } else {
-      setErrors({ ...errors, email: "Invalid credentials" });
+      setErrors({ ...errors, email: "Invalid credentials", password: "Invalid credentials" });
     }
   };
 

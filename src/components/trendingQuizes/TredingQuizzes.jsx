@@ -44,7 +44,7 @@ export default function TredingQuizzes() {
         </>
       ) : (
         <div className={styles.emptyTredingquizzes}>
-          There are no quizzes treding right now
+          There are no quizzes trending right now
         </div>
       )}
     </div>

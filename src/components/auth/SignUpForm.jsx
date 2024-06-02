@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./loginsignup.module.css";
 import { registerUser } from "../../api/auth";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignupForm({ setIsLogin }) {
   const [formData, setFormData] = useState({
@@ -44,7 +45,18 @@ export default function SignupForm({ setIsLogin }) {
     if (result === 409) {
       setErrors({ ...errors, email: "This email is already in use" });
     } else if (result === 200) {
-      setIsLogin(true);
+      toast.success("Your account has been created", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setTimeout(() => {
+        setIsLogin(true);
+      }, 3000);
     } else {
       alert("Registration failed. Please try again.");
     }
@@ -52,6 +64,7 @@ export default function SignupForm({ setIsLogin }) {
 
   return (
     <div className={styles.SignUpform}>
+      <ToastContainer />
       <div className={styles.formGroup}>
         <label>Name</label>
         <div className={styles.inputWrapper}>
@@ -105,19 +118,19 @@ export default function SignupForm({ setIsLogin }) {
       <div className={styles.formGroup}>
         <label>Confirm Password</label>
         <div className={styles.inputWrapper}>
-        <input
-          className={`${styles.input} ${
-            errors.confirmPassword ? styles.inputError : ""
-          }`}
-          onChange={handleChange}
-          name="confirmPassword"
-          type="password"
-          value={formData.confirmPassword}
-          required
-        />
-        {errors.confirmPassword && (
-          <span className={styles.error}>{errors.confirmPassword}</span>
-        )}
+          <input
+            className={`${styles.input} ${
+              errors.confirmPassword ? styles.inputError : ""
+            }`}
+            onChange={handleChange}
+            name="confirmPassword"
+            type="password"
+            value={formData.confirmPassword}
+            required
+          />
+          {errors.confirmPassword && (
+            <span className={styles.error}>{errors.confirmPassword}</span>
+          )}
         </div>
       </div>
       <button

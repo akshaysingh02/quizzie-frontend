@@ -86,6 +86,8 @@ export default function AnalysisTable() {
       ) : (
         <>
           <h1>Quiz Analysis</h1>
+          {quizData.length !== 0 ? (
+            <>
           <table className={styles.AnalysisTable}>
             <thead>
               <tr>
@@ -126,6 +128,10 @@ export default function AnalysisTable() {
               ))}
             </tbody>
           </table>
+            </>
+          ) : (
+            <h2 className={styles.emptyQuizMessage}>Create Quizzes to access their analytics</h2>
+          )}
         </>
       )}
       <Modal
@@ -137,7 +143,7 @@ export default function AnalysisTable() {
       >
         <h2>Are you sure you want to delete this quiz?</h2>
         <div className={styles.modalActions}>
-          <button onClick={handleDelete}>Confirm Delete</button>
+          <button className={styles.redButton} onClick={handleDelete}>Confirm Delete</button>
           <button onClick={closeModal}>Cancel</button>
         </div>
       </Modal>

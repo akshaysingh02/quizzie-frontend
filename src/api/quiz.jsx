@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = "http://localhost:4001";
+const backendUrl = "https://quizzie-server-h49m.onrender.com";
 
 export const createQuiz = async (quizPayload) => {
   try {
