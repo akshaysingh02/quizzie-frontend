@@ -18,6 +18,8 @@ export default function AnalysisTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quizToDelete, setQuizToDelete] = useState(null);
 
+  const frontEndLink = "https://master--vermillion-cuchufli-5fa6d1.netlify.app"
+
   const fetchAllQuizzes = async () => {
     const result = await getAllQuizzes();
     setQuizData(result?.data);
@@ -51,7 +53,7 @@ export default function AnalysisTable() {
 
   const handleCopy = (uniqueLink) => {
     console.log(uniqueLink);
-    const fullUrl = `http://localhost:3000/quiz/take/${uniqueLink}`;
+    const fullUrl = `${frontEndLink}/quiz/take/${uniqueLink}`;
     navigator.clipboard
       .writeText(fullUrl)
       .then(() => {
