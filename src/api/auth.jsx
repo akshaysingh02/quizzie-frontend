@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 const backendUrl = "https://quizzie-server-h49m.onrender.com/api/auth";
 
 export const registerUser = async ({ name, email, password }) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import styles from "./CreateQuizModal.module.css";
 import { createQuiz } from "../../api/quiz";

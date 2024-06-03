@@ -109,7 +109,7 @@ export default function AnalysisTable() {
                   <td>{formatCreatedAt(data.createdAt)}</td>
                   <td>{data.impressions}</td>
                   <td>
-                    <img src={edit} alt="Edit" />
+                    <img className={styles.shareImg} src={edit} alt="Edit" />
                     <img
                       src={delete_icon}
                       alt="Delete"
